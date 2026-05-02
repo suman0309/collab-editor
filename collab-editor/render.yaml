@@ -1,0 +1,18 @@
+# render.yaml — drop in project root and push to GitHub, then import on render.com
+
+services:
+  - type: web
+    name: collab-editor-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: MONGODB_URI
+        sync: false        # Set this in Render dashboard
+      - key: JUDGE0_API_KEY
+        sync: false        # Set this in Render dashboard
+      - key: CLIENT_URL
+        sync: false        # e.g. https://your-app.vercel.app
